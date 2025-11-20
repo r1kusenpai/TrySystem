@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">$(MSBuildProjectDirectory)\..\</SolutionDir>
+        <NuGetToolsPath>$([System.IO.Path]::Combine($(SolutionDir), ".nuget"))</NuGetToolsPath>
+        <NuGetExePath>$(NuGetToolsPath)\NuGet.exe</NuGetExePath>
+        <PackagesConfig>$([System.IO.Path]::Combine($(ProjectDir), "packages.config"))</PackagesConfig>
+        <PackagesDir>$([System.IO.Path]::Combine($(SolutionDir), "packages"))</PackagesDir>
+        <PackageOutputDir>$(PackagesDir)</PackageOutputDir>
+        <RequireConsentSwitch Condition="$(RequireConsentSwitch) == ''">-RequireConsent</RequireConsentSwitch>
+        <NonInteractiveSwitch Condition="$(NonInteractiveSwitch) == ''">-NonInteractive</NonInteractiveSwitch>
+        <PaddedSolutionDir Condition="'$(OS)' == 'Windows_NT'">"$(SolutionDir) "</PaddedSolutionDir>
+        <PaddedSolutionDir Condition="'$(OS)' != 'Windows_NT'">"$(SolutionDir)"</PaddedSolutionDir>
+        <RestorePackages Condition="$(RestorePackages) == ''">true</RestorePackages>
+        <RestoreCommand>$(NuGetExePath) install "$(PackagesConfig)" -source "" $(NonInteractiveSwitch) $(RequireConsentSwitch) -solutionDir $(PaddedSolutionDir)</RestoreCommand>
+        <BuildCommand>$(NuGetExePath) pack "$(ProjectPath)" -Properties Configuration=$(Configuration) $(NonInteractiveSwitch) -OutputDirectory "$(PackageOutputDir)" -symbols</BuildCommand>
+        <PublishCommand>$(NuGetExePath) push "$(PackageOutputDir)\$(ProjectName).$(PackageVersion).nupkg" $(NonInteractiveSwitch)</PublishCommand>
+    </PropertyGroup>
+    <Target Name="CheckPrerequisites">
+        <Error Condition="'$(OS)' != 'Windows_NT' And !Exists('$(NuGetExePath)')" Text="Unable to locate '$(NuGetExePath)'" />
+        <SetEnvironmentVariable EnvKey="VisualStudioVersion" EnvValue="$(VisualStudioVersion)" Condition="'$(OS)' == 'Windows_NT'" />
+        <SetEnvironmentVariable EnvKey="SolutionDir" EnvValue="$(SolutionDir)" Condition="'$(OS)' == 'Windows_NT'" />
+    </Target>
+    <Target Name="RestorePackages" DependsOnTargets="CheckPrerequisites">
+        <Exec Command="$(RestoreCommand)"
+              Condition="'$(OS)' != 'Windows_NT' And Exists('$(PackagesConfig)')" />
+        <Exec Command="$(RestoreCommand)"
+              LogStandardErrorAsError="true"
+              Condition="'$(OS)' == 'Windows_NT' And Exists('$(PackagesConfig)')" />
+    </Target>
+    <Target Name="BuildPackage" DependsOnTargets="CheckPrerequisites">
+        <Exec Command="$(BuildCommand)"
+              Condition="'$(OS)' != 'Windows_NT' And '$(BuildPackage)' == 'true'" />
+        <Exec Command="$(BuildCommand)"
+              LogStandardErrorAsError="true"
+              Condition="'$(OS)' == 'Windows_NT' And '$(BuildPackage)' == 'true'" />
+    </Target>
+    <UsingTask TaskName="SetEnvironmentVariable" TaskFactory="CodeTaskFactory" AssemblyFile="$(MSBuildToolsPath)\Microsoft.Build.Tasks.v4.0.dll">
+        <ParameterGroup>
+            <EnvKey ParameterType="System.String" Required="true" />
+            <EnvValue ParameterType="System.String" Required="true" />
+        </ParameterGroup>
+        <Task>
+            <SetEnvironmentVariable Name="$(EnvKey)" Value="$(EnvValue)" />
+        </Task>
+    </UsingTask>
+</Project>
+
