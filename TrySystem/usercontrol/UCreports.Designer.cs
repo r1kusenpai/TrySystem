@@ -73,18 +73,17 @@
             this.panel6.Controls.Add(this.label22);
             this.panel6.Location = new System.Drawing.Point(12, 82);
             this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(902, 158);
+            this.panel6.Size = new System.Drawing.Size(902, 148);
             this.panel6.TabIndex = 12;
             // 
             // label20
             // 
-            this.label20.AutoSize = false;
+            this.label20.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
             this.label20.Location = new System.Drawing.Point(8, 50);
             this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(880, 100);
+            this.label20.Size = new System.Drawing.Size(880, 96);
             this.label20.TabIndex = 2;
             this.label20.Text = "Products running low (Less than 10 units)";
-            this.label20.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
             // 
             // label21
             // 
@@ -119,10 +118,10 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
-            this.label1.Location = new System.Drawing.Point(13, 383);
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.label1.Location = new System.Drawing.Point(13, 389);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(180, 24);
+            this.label1.Size = new System.Drawing.Size(164, 20);
             this.label1.TabIndex = 14;
             this.label1.Text = "Low Stock Products:";
             // 
@@ -131,9 +130,9 @@
             this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
             this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(700, 383);
+            this.comboBox1.Location = new System.Drawing.Point(708, 383);
             this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(213, 26);
+            this.comboBox1.Size = new System.Drawing.Size(205, 26);
             this.comboBox1.TabIndex = 15;
             this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
@@ -143,7 +142,7 @@
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
             this.label2.Location = new System.Drawing.Point(630, 386);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(64, 18);
+            this.label2.Size = new System.Drawing.Size(72, 18);
             this.label2.TabIndex = 16;
             this.label2.Text = "Category:";
             // 
@@ -160,10 +159,10 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
-            this.label3.Location = new System.Drawing.Point(13, 233);
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.label3.Location = new System.Drawing.Point(13, 237);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(200, 24);
+            this.label3.Size = new System.Drawing.Size(186, 20);
             this.label3.TabIndex = 18;
             this.label3.Text = "Low Stock by Category:";
             // 

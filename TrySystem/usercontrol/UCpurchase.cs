@@ -47,8 +47,8 @@ namespace TrySystem.usercontrol
                 label15.Text = activeSuppliers.ToString();
 
                 // Load ongoing orders
-                int ongoingOrders = DatabaseHelper.GetOngoingOrders();
-                label2.Text = ongoingOrders.ToString();
+                //int ongoingOrders = DatabaseHelper.GetOngoingOrders();
+                //label2.Text = ongoingOrders.ToString();
 
                 // Load purchase order history
                 LoadPurchaseHistory();
@@ -166,6 +166,11 @@ namespace TrySystem.usercontrol
                     }
                 }
             }
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

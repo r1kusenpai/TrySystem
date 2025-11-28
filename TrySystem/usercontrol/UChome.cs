@@ -53,5 +53,10 @@ namespace TrySystem.usercontrol
                 }
             }
         }
+
+        private void home_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }

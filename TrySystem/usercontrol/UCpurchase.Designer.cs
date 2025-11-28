@@ -39,10 +39,10 @@
             this.label11 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.label1 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.label4 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
@@ -120,6 +120,7 @@
             this.panel5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel5.Controls.Add(this.label10);
             this.panel5.Controls.Add(this.label11);
+            this.panel5.Controls.Add(this.label2);
             this.panel5.Controls.Add(this.label12);
             this.panel5.Location = new System.Drawing.Point(321, 82);
             this.panel5.Name = "panel5";
@@ -131,7 +132,7 @@
             this.label10.AutoSize = true;
             this.label10.Location = new System.Drawing.Point(8, 127);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(134, 16);
+            this.label10.Size = new System.Drawing.Size(136, 16);
             this.label10.TabIndex = 2;
             this.label10.Text = "Total Purchase Value";
             // 
@@ -139,11 +140,11 @@
             // 
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F);
-            this.label11.Location = new System.Drawing.Point(4, 88);
+            this.label11.Location = new System.Drawing.Point(32, 88);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(35, 36);
+            this.label11.Size = new System.Drawing.Size(32, 36);
             this.label11.TabIndex = 1;
-            this.label11.Text = "₱";
+            this.label11.Text = "0";
             // 
             // label12
             // 
@@ -161,7 +162,6 @@
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.label3);
-            this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.label17);
             this.panel1.Location = new System.Drawing.Point(12, 82);
             this.panel1.Name = "panel1";
@@ -172,7 +172,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F);
-            this.label1.Location = new System.Drawing.Point(30, 88);
+            this.label1.Location = new System.Drawing.Point(5, 88);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(32, 36);
             this.label1.TabIndex = 3;
@@ -191,11 +191,12 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F);
-            this.label2.Location = new System.Drawing.Point(4, 88);
+            this.label2.Location = new System.Drawing.Point(5, 88);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(35, 36);
             this.label2.TabIndex = 1;
             this.label2.Text = "₱";
+            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // label17
             // 
@@ -229,11 +230,11 @@
             // 
             // button1
             // 
-            this.button1.BackColor = System.Drawing.Color.FromArgb(70, 130, 180);
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(130)))), ((int)(((byte)(180)))));
             this.button1.FlatAppearance.BorderSize = 0;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.ForeColor = System.Drawing.Color.White;
-            this.button1.Location = new System.Drawing.Point(800, 60);
+            this.button1.Location = new System.Drawing.Point(801, 41);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(114, 35);
             this.button1.TabIndex = 16;
@@ -242,9 +243,9 @@
             // 
             // btnEdit
             // 
-            this.btnEdit.BackColor = System.Drawing.Color.FromArgb(70, 130, 180);
-            this.btnEdit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnEdit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(130)))), ((int)(((byte)(180)))));
             this.btnEdit.FlatAppearance.BorderSize = 0;
+            this.btnEdit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnEdit.ForeColor = System.Drawing.Color.White;
             this.btnEdit.Location = new System.Drawing.Point(680, 260);
             this.btnEdit.Name = "btnEdit";
@@ -255,9 +256,9 @@
             // 
             // btnDelete
             // 
-            this.btnDelete.BackColor = System.Drawing.Color.FromArgb(220, 53, 69);
-            this.btnDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDelete.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(53)))), ((int)(((byte)(69)))));
             this.btnDelete.FlatAppearance.BorderSize = 0;
+            this.btnDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDelete.ForeColor = System.Drawing.Color.White;
             this.btnDelete.Location = new System.Drawing.Point(800, 260);
             this.btnDelete.Name = "btnDelete";

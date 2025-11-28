@@ -79,9 +79,9 @@
             // 
             this.button1.BackColor = System.Drawing.Color.Gainsboro;
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.button1.Location = new System.Drawing.Point(739, 33);
+            this.button1.Location = new System.Drawing.Point(738, 38);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(120, 42);
+            this.button1.Size = new System.Drawing.Size(134, 38);
             this.button1.TabIndex = 11;
             this.button1.Text = "Add Product";
             this.button1.UseVisualStyleBackColor = false;
@@ -90,9 +90,9 @@
             // textBox1
             // 
             this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.textBox1.Location = new System.Drawing.Point(102, 94);
+            this.textBox1.Location = new System.Drawing.Point(614, 94);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(242, 24);
+            this.textBox1.Size = new System.Drawing.Size(210, 24);
             this.textBox1.TabIndex = 12;
             this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
@@ -111,9 +111,9 @@
             this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
             this.button2.ForeColor = System.Drawing.Color.White;
-            this.button2.Location = new System.Drawing.Point(350, 94);
+            this.button2.Location = new System.Drawing.Point(830, 91);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(85, 24);
+            this.button2.Size = new System.Drawing.Size(85, 30);
             this.button2.TabIndex = 14;
             this.button2.Text = "Search";
             this.button2.UseVisualStyleBackColor = false;
@@ -124,7 +124,7 @@
             this.button3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(130)))), ((int)(((byte)(180)))));
             this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
             this.button3.ForeColor = System.Drawing.Color.White;
-            this.button3.Location = new System.Drawing.Point(12, 94);
+            this.button3.Location = new System.Drawing.Point(12, 91);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(100, 30);
             this.button3.TabIndex = 15;
@@ -137,7 +137,7 @@
             this.button4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(53)))), ((int)(((byte)(69)))));
             this.button4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
             this.button4.ForeColor = System.Drawing.Color.White;
-            this.button4.Location = new System.Drawing.Point(118, 94);
+            this.button4.Location = new System.Drawing.Point(118, 91);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(100, 30);
             this.button4.TabIndex = 16;
@@ -174,6 +174,7 @@
             this.Controls.Add(this.dash);
             this.Name = "UCinventory";
             this.Size = new System.Drawing.Size(927, 611);
+            this.Load += new System.EventHandler(this.UCinventory_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.inventoryDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.itemsBindingSource)).EndInit();
