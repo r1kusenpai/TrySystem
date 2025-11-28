@@ -1,4 +1,5 @@
-﻿using System;
+﻿
+using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
@@ -40,7 +41,8 @@ namespace TrySystem
                         "Initialization Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 
-                Application.Run(new Form1());
+                // Show login form first
+                Application.Run(new login());
             }
             catch (Exception ex)
             {

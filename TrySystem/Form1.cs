@@ -13,10 +13,19 @@ namespace TrySystem
 {
     public partial class Form1 : Form
     {
-        public Form1()
+        private readonly string _currentUsername;
+
+        public Form1() : this("User")
         {
+        }
+
+        public Form1(string username)
+        {
+            _currentUsername = string.IsNullOrWhiteSpace(username) ? "User" : username.Trim();
             InitializeComponent();
             EnhanceUI();
+            LoadDashboardData();
+            UpdateUserGreeting();
         }
         
         private void EnhanceUI()
@@ -54,6 +63,56 @@ namespace TrySystem
             // Enhance logo
             logo.ForeColor = Color.White;
             logo.Font = new Font("Century Gothic", 14F, FontStyle.Bold);
+        }
+
+        private void LoadDashboardData()
+        {
+            // Load inventory value
+            decimal inventoryValue = DatabaseHelper.GetInventoryValue();
+            label4.Text = inventoryValue.ToString("N2");
+
+            // Load total products
+            int totalProducts = DatabaseHelper.GetTotalProducts();
+            label11.Text = totalProducts.ToString();
+
+            // Load total units
+            decimal inventoryValue1 = DatabaseHelper.GetInventoryValue();
+            label5.Text = inventoryValue1.ToString();
+
+            // Load low stock count
+            int lowStockCount = DatabaseHelper.GetLowStockCount();
+            label21.Text = lowStockCount.ToString();
+
+            // Load recent history
+            LoadRecentHistory();
+        }
+
+        private void UpdateUserGreeting()
+        {
+            string displayName = string.IsNullOrWhiteSpace(_currentUsername) ? "User" : _currentUsername;
+            if (label13 != null)
+            {
+                label13.Text = $"Welcome back, {displayName}! Here's what's happening with your warehouse.";
+            }
+
+            if (lblCurrentUser != null)
+            {
+                lblCurrentUser.Text = $"Logged in as: {displayName}";
+            }
+        }
+
+        private void LoadRecentHistory()
+        {
+            dataGridView1.DataSource = DatabaseHelper.GetHistory();
+            if (dataGridView1.Columns.Count > 0)
+            {
+                dataGridView1.Columns["Id"].Visible = false;
+                dataGridView1.Columns["ProductId"].Visible = false;
+                if (dataGridView1.Columns["Price"] != null)
+                {
+                    dataGridView1.Columns["Price"].DefaultCellStyle.Format = "C2";
+                }
+            }
         }
         private void addusercontrol(UserControl usercontrol)
         {
@@ -109,12 +168,22 @@ namespace TrySystem
             addusercontrol(uReports);
         }
 
+        private void btnLogout_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
         public void TriggerAddItemTab()
         {
             additemtab_Click(null, null);
         }
 
         private void panel3_Paint(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblCurrentUser_Click(object sender, EventArgs e)
         {
 
         }
