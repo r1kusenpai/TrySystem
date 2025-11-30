@@ -40,7 +40,7 @@ namespace TrySystem
                     MessageBox.Show($"Application initialization error: {ex.Message}", 
                         "Initialization Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
-                
+
                 // Show login form first
                 Application.Run(new login());
             }
