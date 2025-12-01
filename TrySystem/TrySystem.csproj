@@ -206,12 +206,6 @@
     <Compile Include="register.Designer.cs">
       <DependentUpon>register.cs</DependentUpon>
     </Compile>
-    <Compile Include="usercontrol\tryinventory.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="usercontrol\tryinventory.Designer.cs">
-      <DependentUpon>tryinventory.cs</DependentUpon>
-    </Compile>
     <Compile Include="usercontrol\UCadditem.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -263,9 +257,6 @@
     </Compile>
     <EmbeddedResource Include="register.resx">
       <DependentUpon>register.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="usercontrol\tryinventory.resx">
-      <DependentUpon>tryinventory.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="usercontrol\UCadditem.resx">
       <DependentUpon>UCadditem.cs</DependentUpon>
@@ -354,6 +345,24 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\coin.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\shopping-cart %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cuba.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\peso.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\plus-symbol-button.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\add.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\add1.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\Microsoft.Data.SqlClient.SNI.6.0.2\build\net462\Microsoft.Data.SqlClient.SNI.targets" Condition="Exists('..\packages\Microsoft.Data.SqlClient.SNI.6.0.2\build\net462\Microsoft.Data.SqlClient.SNI.targets')" />

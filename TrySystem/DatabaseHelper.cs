@@ -691,17 +691,24 @@ END";
             }
         }
 
-        public static bool UpdatePurchaseOrder(int id, string supplierName, int productId, string productName, int quantity, decimal price, string status)
+        public static bool UpdatePurchaseOrder(int id, string supplierName, int productId, string productName, int quantity, decimal price, decimal totalAmount, string status)
         {
             try
             {
                 using (SqlConnection conn = GetConnection())
                 {
                     conn.Open();
+
+                    // 2. The SQL query includes TotalAmount
                     string query = @"UPDATE PurchaseOrders 
-                                   SET SupplierName = @supplierName, ProductId = @productId, ProductName = @productName, 
-                                       Quantity = @quantity, Price = @price, Status = @status
-                                   WHERE Id = @id";
+                             SET SupplierName = @supplierName, 
+                                 ProductId = @productId, 
+                                 ProductName = @productName, 
+                                 Quantity = @quantity, 
+                                 Price = @price, 
+                                 TotalAmount = @totalAmount, 
+                                 Status = @status
+                             WHERE Id = @id";
 
                     using (SqlCommand cmd = new SqlCommand(query, conn))
                     {
@@ -711,7 +718,11 @@ END";
                         cmd.Parameters.AddWithValue("@productName", productName);
                         cmd.Parameters.AddWithValue("@quantity", quantity);
                         cmd.Parameters.AddWithValue("@price", price);
+
+                        // 3. Now this line will work because 'totalAmount' is in the top list
+                        cmd.Parameters.AddWithValue("@totalAmount", totalAmount);
                         cmd.Parameters.AddWithValue("@status", status);
+
                         cmd.ExecuteNonQuery();
                     }
                 }
@@ -878,6 +889,31 @@ END";
         /// <summary>
         /// Authenticates a user with username and password
         /// </summary>
+        /// 
+        // IN DatabaseHelper.cs
+        public static bool AddPurchaseOrder(string supplier, int prodId, string prodName, int qty, decimal price, decimal totalAmount, string status)
+        {
+            using (SqlConnection conn = GetConnection())
+            {
+                // Make sure @total is in your SQL string!
+                string query = "INSERT INTO PurchaseOrders (SupplierName, ProductId, ProductName, Quantity, Price, TotalAmount, Status, OrderDate) VALUES (@sup, @pid, @pname, @qty, @price, @total, @stat, GETDATE())";
+
+                using (SqlCommand cmd = new SqlCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@sup", supplier);
+                    cmd.Parameters.AddWithValue("@pid", prodId);
+                    cmd.Parameters.AddWithValue("@pname", prodName);
+                    cmd.Parameters.AddWithValue("@qty", qty);
+                    cmd.Parameters.AddWithValue("@price", price);
+                    cmd.Parameters.AddWithValue("@total", totalAmount); // <--- THIS IS THE FIX
+                    cmd.Parameters.AddWithValue("@stat", status);
+
+                    conn.Open();
+                    return cmd.ExecuteNonQuery() > 0;
+                }
+            }
+        }
+
         public static bool AuthenticateUser(string username, string password)
         {
             try
