@@ -206,7 +206,7 @@ namespace TrySystem
         {
             try
             {
-                // Validate inputs
+                // --- 1. VALIDATION ---
                 if (string.IsNullOrWhiteSpace(txtSupplierName.Text))
                 {
                     MessageBox.Show("Supplier name is required.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -231,18 +231,35 @@ namespace TrySystem
                     return;
                 }
 
+                // --- 2. PREPARE DATA ---
                 int productId = Convert.ToInt32(cmbProduct.SelectedValue);
                 string productName = cmbProduct.Text;
                 string supplierName = txtSupplierName.Text.Trim();
 
+                // Calculate the Total Amount (This fixes the NULL error)
+                decimal totalAmount = quantity * price;
+
                 bool success = false;
-                
+
+                // --- 3. SAVE TO DATABASE ---
                 if (purchaseOrderId.HasValue)
                 {
-                    // Update existing purchase order
+                    // UPDATE EXISTING ORDER
                     DataRow oldOrder = DatabaseHelper.GetPurchaseOrderById(purchaseOrderId.Value);
-                    success = DatabaseHelper.UpdatePurchaseOrder(purchaseOrderId.Value, supplierName, productId, productName, quantity, price, oldOrder["Status"]?.ToString() ?? "Pending");
-                    
+                    string currentStatus = oldOrder["Status"]?.ToString() ?? "Pending";
+
+                    // Note: Ensure your DatabaseHelper.UpdatePurchaseOrder accepts 'totalAmount'
+                    success = DatabaseHelper.UpdatePurchaseOrder(
+                        purchaseOrderId.Value,
+                        supplierName,
+                        productId,
+                        productName,
+                        quantity,
+                        price,
+                        totalAmount,     // <--- Passing the calculated total
+                        currentStatus
+                    );
+
                     if (success)
                     {
                         MessageBox.Show("Purchase order updated successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -252,19 +269,28 @@ namespace TrySystem
                 }
                 else
                 {
-                    // Add new purchase order
-                    success = DatabaseHelper.AddPurchaseOrder(supplierName, productId, productName, quantity, price, "Pending");
+                    // ADD NEW ORDER
+                    // Note: Ensure your DatabaseHelper.AddPurchaseOrder accepts 'totalAmount'
+                    success = DatabaseHelper.AddPurchaseOrder(
+                        supplierName,
+                        productId,
+                        productName,
+                        quantity,
+                        price,
+                        totalAmount,     // <--- Passing the calculated total
+                        "Pending"
+                    );
 
                     if (success)
                     {
-                        // Update product quantity in inventory
+                        // --- 4. UPDATE INVENTORY STOCK ---
                         DataRow productData = DatabaseHelper.GetProductById(productId);
                         if (productData != null)
                         {
                             int currentQuantity = Convert.ToInt32(productData["Quantity"]);
                             int newQuantity = currentQuantity + quantity;
-                            decimal productPrice = Convert.ToDecimal(productData["Price"]);
-                            
+                            decimal productPrice = Convert.ToDecimal(productData["Price"]); // Keep original selling price
+
                             DatabaseHelper.UpdateProduct(
                                 productId,
                                 productData["ProductName"].ToString(),
