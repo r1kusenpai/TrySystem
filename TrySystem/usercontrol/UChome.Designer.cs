@@ -28,31 +28,24 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label1 = new System.Windows.Forms.Label();
             this.dash = new System.Windows.Forms.Label();
             this.home = new System.Windows.Forms.Panel();
             this.panelcontainer = new System.Windows.Forms.Panel();
             this.recentorder = new Guna.UI2.WinForms.Guna2DataGridView();
-            this.guna2CustomGradientPanel4 = new Guna.UI2.WinForms.Guna2CustomGradientPanel();
-            this.label19 = new System.Windows.Forms.Label();
-            this.label23 = new System.Windows.Forms.Label();
-            this.label24 = new System.Windows.Forms.Label();
             this.guna2CustomGradientPanel3 = new Guna.UI2.WinForms.Guna2CustomGradientPanel();
             this.label25 = new System.Windows.Forms.Label();
-            this.label26 = new System.Windows.Forms.Label();
             this.label27 = new System.Windows.Forms.Label();
             this.guna2CustomGradientPanel2 = new Guna.UI2.WinForms.Guna2CustomGradientPanel();
             this.label28 = new System.Windows.Forms.Label();
-            this.label29 = new System.Windows.Forms.Label();
             this.label30 = new System.Windows.Forms.Label();
             this.guna2CustomGradientPanel1 = new Guna.UI2.WinForms.Guna2CustomGradientPanel();
             this.label31 = new System.Windows.Forms.Label();
             this.label32 = new System.Windows.Forms.Label();
-            this.label33 = new System.Windows.Forms.Label();
             this.label34 = new System.Windows.Forms.Label();
             this.lblCurrentUser = new System.Windows.Forms.Label();
             this.label35 = new System.Windows.Forms.Label();
@@ -84,19 +77,28 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
             this.label18 = new System.Windows.Forms.Label();
+            this.label26 = new System.Windows.Forms.Label();
+            this.label29 = new System.Windows.Forms.Label();
+            this.label33 = new System.Windows.Forms.Label();
+            this.guna2ShadowPanel1 = new Guna.UI2.WinForms.Guna2ShadowPanel();
+            this.guna2ShadowPanel2 = new Guna.UI2.WinForms.Guna2ShadowPanel();
+            this.guna2ShadowPanel3 = new Guna.UI2.WinForms.Guna2ShadowPanel();
+            this.guna2CustomGradientPanel5 = new Guna.UI2.WinForms.Guna2CustomGradientPanel();
+            this.label24 = new System.Windows.Forms.Label();
+            this.label38 = new System.Windows.Forms.Label();
             this.home.SuspendLayout();
             this.panelcontainer.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.recentorder)).BeginInit();
-            this.guna2CustomGradientPanel4.SuspendLayout();
-            this.guna2CustomGradientPanel3.SuspendLayout();
-            this.guna2CustomGradientPanel2.SuspendLayout();
-            this.guna2CustomGradientPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panel6.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel5.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
+            this.guna2ShadowPanel1.SuspendLayout();
+            this.guna2ShadowPanel2.SuspendLayout();
+            this.guna2ShadowPanel3.SuspendLayout();
+            this.guna2CustomGradientPanel5.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
@@ -140,8 +142,11 @@
             // panelcontainer
             // 
             this.panelcontainer.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(244)))), ((int)(((byte)(246)))));
+            this.panelcontainer.Controls.Add(this.guna2CustomGradientPanel5);
+            this.panelcontainer.Controls.Add(this.guna2ShadowPanel2);
+            this.panelcontainer.Controls.Add(this.guna2ShadowPanel3);
+            this.panelcontainer.Controls.Add(this.guna2ShadowPanel1);
             this.panelcontainer.Controls.Add(this.recentorder);
-            this.panelcontainer.Controls.Add(this.guna2CustomGradientPanel4);
             this.panelcontainer.Controls.Add(this.guna2CustomGradientPanel3);
             this.panelcontainer.Controls.Add(this.guna2CustomGradientPanel2);
             this.panelcontainer.Controls.Add(this.guna2CustomGradientPanel1);
@@ -160,46 +165,46 @@
             // 
             this.recentorder.AllowUserToResizeColumns = false;
             this.recentorder.AllowUserToResizeRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(202)))), ((int)(((byte)(253)))));
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(234)))), ((int)(((byte)(234)))), ((int)(((byte)(234)))));
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            this.recentorder.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.Silver;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.Silver;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.recentorder.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(202)))), ((int)(((byte)(253)))));
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(234)))), ((int)(((byte)(234)))), ((int)(((byte)(234)))));
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            this.recentorder.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.Color.Silver;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.Silver;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.recentorder.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle6;
             this.recentorder.ColumnHeadersHeight = 24;
             this.recentorder.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(234)))), ((int)(((byte)(234)))), ((int)(((byte)(234)))));
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.recentorder.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle7.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(234)))), ((int)(((byte)(234)))), ((int)(((byte)(234)))));
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.recentorder.DefaultCellStyle = dataGridViewCellStyle7;
             this.recentorder.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
-            this.recentorder.Location = new System.Drawing.Point(13, 473);
+            this.recentorder.Location = new System.Drawing.Point(13, 344);
             this.recentorder.Name = "recentorder";
             this.recentorder.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.recentorder.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle8.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.recentorder.RowHeadersDefaultCellStyle = dataGridViewCellStyle8;
             this.recentorder.RowHeadersVisible = false;
             this.recentorder.RowHeadersWidth = 51;
             this.recentorder.RowTemplate.Height = 24;
-            this.recentorder.Size = new System.Drawing.Size(901, 124);
+            this.recentorder.Size = new System.Drawing.Size(901, 253);
             this.recentorder.TabIndex = 15;
             this.recentorder.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(202)))), ((int)(((byte)(253)))));
             this.recentorder.ThemeStyle.AlternatingRowsStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -223,65 +228,11 @@
             this.recentorder.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.Silver;
             this.recentorder.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
             // 
-            // guna2CustomGradientPanel4
-            // 
-            this.guna2CustomGradientPanel4.BorderColor = System.Drawing.Color.Red;
-            this.guna2CustomGradientPanel4.BorderRadius = 20;
-            this.guna2CustomGradientPanel4.BorderThickness = 2;
-            this.guna2CustomGradientPanel4.Controls.Add(this.label19);
-            this.guna2CustomGradientPanel4.Controls.Add(this.label23);
-            this.guna2CustomGradientPanel4.Controls.Add(this.label24);
-            this.guna2CustomGradientPanel4.CustomBorderColor = System.Drawing.Color.Red;
-            this.guna2CustomGradientPanel4.CustomBorderThickness = new System.Windows.Forms.Padding(4, 0, 0, 0);
-            this.guna2CustomGradientPanel4.Location = new System.Drawing.Point(13, 268);
-            this.guna2CustomGradientPanel4.Name = "guna2CustomGradientPanel4";
-            this.guna2CustomGradientPanel4.Size = new System.Drawing.Size(902, 158);
-            this.guna2CustomGradientPanel4.TabIndex = 14;
-            // 
-            // label19
-            // 
-            this.label19.AutoSize = true;
-            this.label19.BackColor = System.Drawing.Color.Transparent;
-            this.label19.Location = new System.Drawing.Point(8, 127);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(244, 16);
-            this.label19.TabIndex = 2;
-            this.label19.Text = "Products running low (Less than 10 units)";
-            // 
-            // label23
-            // 
-            this.label23.AutoSize = true;
-            this.label23.BackColor = System.Drawing.Color.Transparent;
-            this.label23.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label23.Image = global::TrySystem.Properties.Resources.warning;
-            this.label23.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.label23.Location = new System.Drawing.Point(7, 9);
-            this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(154, 23);
-            this.label23.TabIndex = 0;
-            this.label23.Text = "     Low Stock Alert";
-            this.label23.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label24
-            // 
-            this.label24.AutoSize = true;
-            this.label24.BackColor = System.Drawing.Color.Transparent;
-            this.label24.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label24.ForeColor = System.Drawing.Color.Red;
-            this.label24.Location = new System.Drawing.Point(4, 88);
-            this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(33, 36);
-            this.label24.TabIndex = 1;
-            this.label24.Text = "0";
-            // 
             // guna2CustomGradientPanel3
             // 
             this.guna2CustomGradientPanel3.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
             this.guna2CustomGradientPanel3.BorderRadius = 20;
             this.guna2CustomGradientPanel3.BorderThickness = 2;
-            this.guna2CustomGradientPanel3.Controls.Add(this.label25);
-            this.guna2CustomGradientPanel3.Controls.Add(this.label26);
-            this.guna2CustomGradientPanel3.Controls.Add(this.label27);
             this.guna2CustomGradientPanel3.CustomBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
             this.guna2CustomGradientPanel3.CustomBorderThickness = new System.Windows.Forms.Padding(4, 0, 0, 0);
             this.guna2CustomGradientPanel3.Location = new System.Drawing.Point(633, 82);
@@ -293,30 +244,18 @@
             // 
             this.label25.AutoSize = true;
             this.label25.BackColor = System.Drawing.Color.Transparent;
-            this.label25.Location = new System.Drawing.Point(8, 127);
+            this.label25.Location = new System.Drawing.Point(5, 120);
             this.label25.Name = "label25";
             this.label25.Size = new System.Drawing.Size(82, 16);
             this.label25.TabIndex = 2;
             this.label25.Text = "Total Orders";
-            // 
-            // label26
-            // 
-            this.label26.BackColor = System.Drawing.Color.Transparent;
-            this.label26.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold);
-            this.label26.Image = global::TrySystem.Properties.Resources.shopping_cart;
-            this.label26.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.label26.Location = new System.Drawing.Point(7, 9);
-            this.label26.Name = "label26";
-            this.label26.Size = new System.Drawing.Size(212, 35);
-            this.label26.TabIndex = 0;
-            this.label26.Text = "      Active Orders";
             // 
             // label27
             // 
             this.label27.AutoSize = true;
             this.label27.BackColor = System.Drawing.Color.Transparent;
             this.label27.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label27.Location = new System.Drawing.Point(4, 88);
+            this.label27.Location = new System.Drawing.Point(4, 81);
             this.label27.Name = "label27";
             this.label27.Size = new System.Drawing.Size(33, 36);
             this.label27.TabIndex = 1;
@@ -327,9 +266,6 @@
             this.guna2CustomGradientPanel2.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
             this.guna2CustomGradientPanel2.BorderRadius = 20;
             this.guna2CustomGradientPanel2.BorderThickness = 2;
-            this.guna2CustomGradientPanel2.Controls.Add(this.label28);
-            this.guna2CustomGradientPanel2.Controls.Add(this.label29);
-            this.guna2CustomGradientPanel2.Controls.Add(this.label30);
             this.guna2CustomGradientPanel2.CustomBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
             this.guna2CustomGradientPanel2.CustomBorderThickness = new System.Windows.Forms.Padding(4, 0, 0, 0);
             this.guna2CustomGradientPanel2.Location = new System.Drawing.Point(322, 82);
@@ -341,30 +277,18 @@
             // 
             this.label28.AutoSize = true;
             this.label28.BackColor = System.Drawing.Color.Transparent;
-            this.label28.Location = new System.Drawing.Point(8, 127);
+            this.label28.Location = new System.Drawing.Point(5, 120);
             this.label28.Name = "label28";
             this.label28.Size = new System.Drawing.Size(97, 16);
             this.label28.TabIndex = 2;
             this.label28.Text = "Units Available";
-            // 
-            // label29
-            // 
-            this.label29.BackColor = System.Drawing.Color.Transparent;
-            this.label29.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold);
-            this.label29.Image = global::TrySystem.Properties.Resources.category;
-            this.label29.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.label29.Location = new System.Drawing.Point(7, 9);
-            this.label29.Name = "label29";
-            this.label29.Size = new System.Drawing.Size(201, 35);
-            this.label29.TabIndex = 0;
-            this.label29.Text = "      Total Products";
             // 
             // label30
             // 
             this.label30.AutoSize = true;
             this.label30.BackColor = System.Drawing.Color.Transparent;
             this.label30.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label30.Location = new System.Drawing.Point(4, 88);
+            this.label30.Location = new System.Drawing.Point(4, 81);
             this.label30.Name = "label30";
             this.label30.Size = new System.Drawing.Size(33, 36);
             this.label30.TabIndex = 1;
@@ -375,10 +299,6 @@
             this.guna2CustomGradientPanel1.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
             this.guna2CustomGradientPanel1.BorderRadius = 20;
             this.guna2CustomGradientPanel1.BorderThickness = 2;
-            this.guna2CustomGradientPanel1.Controls.Add(this.label31);
-            this.guna2CustomGradientPanel1.Controls.Add(this.label32);
-            this.guna2CustomGradientPanel1.Controls.Add(this.label33);
-            this.guna2CustomGradientPanel1.Controls.Add(this.label34);
             this.guna2CustomGradientPanel1.CustomBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
             this.guna2CustomGradientPanel1.CustomBorderThickness = new System.Windows.Forms.Padding(4, 0, 0, 0);
             this.guna2CustomGradientPanel1.Location = new System.Drawing.Point(13, 82);
@@ -391,7 +311,7 @@
             this.label31.AutoSize = true;
             this.label31.BackColor = System.Drawing.Color.Transparent;
             this.label31.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label31.Location = new System.Drawing.Point(33, 88);
+            this.label31.Location = new System.Drawing.Point(30, 81);
             this.label31.Name = "label31";
             this.label31.Size = new System.Drawing.Size(33, 36);
             this.label31.TabIndex = 3;
@@ -401,30 +321,18 @@
             // 
             this.label32.AutoSize = true;
             this.label32.BackColor = System.Drawing.Color.Transparent;
-            this.label32.Location = new System.Drawing.Point(8, 127);
+            this.label32.Location = new System.Drawing.Point(5, 120);
             this.label32.Name = "label32";
             this.label32.Size = new System.Drawing.Size(121, 16);
             this.label32.TabIndex = 2;
             this.label32.Text = "Total Units in Stock";
-            // 
-            // label33
-            // 
-            this.label33.BackColor = System.Drawing.Color.Transparent;
-            this.label33.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold);
-            this.label33.Image = global::TrySystem.Properties.Resources.coin;
-            this.label33.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.label33.Location = new System.Drawing.Point(7, 9);
-            this.label33.Name = "label33";
-            this.label33.Size = new System.Drawing.Size(195, 35);
-            this.label33.TabIndex = 0;
-            this.label33.Text = "      Inventory Value";
             // 
             // label34
             // 
             this.label34.AutoSize = true;
             this.label34.BackColor = System.Drawing.Color.Transparent;
             this.label34.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label34.Location = new System.Drawing.Point(4, 88);
+            this.label34.Location = new System.Drawing.Point(1, 81);
             this.label34.Name = "label34";
             this.label34.Size = new System.Drawing.Size(35, 36);
             this.label34.TabIndex = 1;
@@ -454,7 +362,7 @@
             // 
             this.label36.AutoSize = true;
             this.label36.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label36.Location = new System.Drawing.Point(10, 452);
+            this.label36.Location = new System.Drawing.Point(10, 323);
             this.label36.Name = "label36";
             this.label36.Size = new System.Drawing.Size(105, 18);
             this.label36.TabIndex = 7;
@@ -737,6 +645,132 @@
             this.label18.TabIndex = 2;
             this.label18.Text = "Dashboard";
             // 
+            // label26
+            // 
+            this.label26.BackColor = System.Drawing.Color.Transparent;
+            this.label26.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold);
+            this.label26.Image = global::TrySystem.Properties.Resources.shopping_cart;
+            this.label26.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label26.Location = new System.Drawing.Point(7, 7);
+            this.label26.Name = "label26";
+            this.label26.Size = new System.Drawing.Size(212, 35);
+            this.label26.TabIndex = 0;
+            this.label26.Text = "      Active Orders";
+            // 
+            // label29
+            // 
+            this.label29.BackColor = System.Drawing.Color.Transparent;
+            this.label29.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold);
+            this.label29.Image = global::TrySystem.Properties.Resources.category;
+            this.label29.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label29.Location = new System.Drawing.Point(7, 7);
+            this.label29.Name = "label29";
+            this.label29.Size = new System.Drawing.Size(201, 35);
+            this.label29.TabIndex = 0;
+            this.label29.Text = "      Total Products";
+            // 
+            // label33
+            // 
+            this.label33.BackColor = System.Drawing.Color.Transparent;
+            this.label33.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold);
+            this.label33.Image = global::TrySystem.Properties.Resources.coin;
+            this.label33.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label33.Location = new System.Drawing.Point(7, 7);
+            this.label33.Name = "label33";
+            this.label33.Size = new System.Drawing.Size(195, 35);
+            this.label33.TabIndex = 0;
+            this.label33.Text = "      Inventory Value";
+            // 
+            // guna2ShadowPanel1
+            // 
+            this.guna2ShadowPanel1.BackColor = System.Drawing.Color.Transparent;
+            this.guna2ShadowPanel1.Controls.Add(this.label32);
+            this.guna2ShadowPanel1.Controls.Add(this.label31);
+            this.guna2ShadowPanel1.Controls.Add(this.label34);
+            this.guna2ShadowPanel1.Controls.Add(this.label33);
+            this.guna2ShadowPanel1.FillColor = System.Drawing.Color.White;
+            this.guna2ShadowPanel1.Location = new System.Drawing.Point(13, 82);
+            this.guna2ShadowPanel1.Name = "guna2ShadowPanel1";
+            this.guna2ShadowPanel1.Radius = 10;
+            this.guna2ShadowPanel1.ShadowColor = System.Drawing.Color.Gray;
+            this.guna2ShadowPanel1.ShadowDepth = 50;
+            this.guna2ShadowPanel1.ShadowStyle = Guna.UI2.WinForms.Guna2ShadowPanel.ShadowMode.Dropped;
+            this.guna2ShadowPanel1.Size = new System.Drawing.Size(282, 158);
+            this.guna2ShadowPanel1.TabIndex = 17;
+            // 
+            // guna2ShadowPanel2
+            // 
+            this.guna2ShadowPanel2.BackColor = System.Drawing.Color.Transparent;
+            this.guna2ShadowPanel2.Controls.Add(this.label29);
+            this.guna2ShadowPanel2.Controls.Add(this.label28);
+            this.guna2ShadowPanel2.Controls.Add(this.label30);
+            this.guna2ShadowPanel2.FillColor = System.Drawing.Color.White;
+            this.guna2ShadowPanel2.Location = new System.Drawing.Point(322, 82);
+            this.guna2ShadowPanel2.Name = "guna2ShadowPanel2";
+            this.guna2ShadowPanel2.Radius = 10;
+            this.guna2ShadowPanel2.ShadowColor = System.Drawing.Color.Gray;
+            this.guna2ShadowPanel2.ShadowDepth = 50;
+            this.guna2ShadowPanel2.ShadowStyle = Guna.UI2.WinForms.Guna2ShadowPanel.ShadowMode.Dropped;
+            this.guna2ShadowPanel2.Size = new System.Drawing.Size(282, 158);
+            this.guna2ShadowPanel2.TabIndex = 18;
+            // 
+            // guna2ShadowPanel3
+            // 
+            this.guna2ShadowPanel3.BackColor = System.Drawing.Color.Transparent;
+            this.guna2ShadowPanel3.Controls.Add(this.label25);
+            this.guna2ShadowPanel3.Controls.Add(this.label26);
+            this.guna2ShadowPanel3.Controls.Add(this.label27);
+            this.guna2ShadowPanel3.FillColor = System.Drawing.Color.White;
+            this.guna2ShadowPanel3.Location = new System.Drawing.Point(633, 82);
+            this.guna2ShadowPanel3.Name = "guna2ShadowPanel3";
+            this.guna2ShadowPanel3.Radius = 10;
+            this.guna2ShadowPanel3.ShadowColor = System.Drawing.Color.Gray;
+            this.guna2ShadowPanel3.ShadowDepth = 50;
+            this.guna2ShadowPanel3.ShadowStyle = Guna.UI2.WinForms.Guna2ShadowPanel.ShadowMode.Dropped;
+            this.guna2ShadowPanel3.Size = new System.Drawing.Size(282, 158);
+            this.guna2ShadowPanel3.TabIndex = 18;
+            // 
+            // guna2CustomGradientPanel5
+            // 
+            this.guna2CustomGradientPanel5.BorderColor = System.Drawing.Color.Red;
+            this.guna2CustomGradientPanel5.BorderRadius = 10;
+            this.guna2CustomGradientPanel5.BorderThickness = 1;
+            this.guna2CustomGradientPanel5.Controls.Add(this.label38);
+            this.guna2CustomGradientPanel5.Controls.Add(this.label24);
+            this.guna2CustomGradientPanel5.CustomBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
+            this.guna2CustomGradientPanel5.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(254)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.guna2CustomGradientPanel5.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(254)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.guna2CustomGradientPanel5.FillColor3 = System.Drawing.Color.FromArgb(((int)(((byte)(254)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.guna2CustomGradientPanel5.FillColor4 = System.Drawing.Color.FromArgb(((int)(((byte)(254)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.guna2CustomGradientPanel5.Location = new System.Drawing.Point(13, 248);
+            this.guna2CustomGradientPanel5.Name = "guna2CustomGradientPanel5";
+            this.guna2CustomGradientPanel5.Size = new System.Drawing.Size(902, 63);
+            this.guna2CustomGradientPanel5.TabIndex = 26;
+            // 
+            // label24
+            // 
+            this.label24.AutoSize = true;
+            this.label24.BackColor = System.Drawing.Color.Transparent;
+            this.label24.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label24.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(185)))), ((int)(((byte)(28)))), ((int)(((byte)(28)))));
+            this.label24.Location = new System.Drawing.Point(203, 20);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(38, 23);
+            this.label24.TabIndex = 1;
+            this.label24.Text = "test";
+            // 
+            // label38
+            // 
+            this.label38.AutoSize = true;
+            this.label38.BackColor = System.Drawing.Color.Transparent;
+            this.label38.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label38.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(185)))), ((int)(((byte)(28)))), ((int)(((byte)(28)))));
+            this.label38.Location = new System.Drawing.Point(20, 20);
+            this.label38.Name = "label38";
+            this.label38.Size = new System.Drawing.Size(172, 23);
+            this.label38.TabIndex = 0;
+            this.label38.Text = "⚠️ Low Stock Alert:";
+            // 
             // UChome
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -751,14 +785,6 @@
             this.panelcontainer.ResumeLayout(false);
             this.panelcontainer.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.recentorder)).EndInit();
-            this.guna2CustomGradientPanel4.ResumeLayout(false);
-            this.guna2CustomGradientPanel4.PerformLayout();
-            this.guna2CustomGradientPanel3.ResumeLayout(false);
-            this.guna2CustomGradientPanel3.PerformLayout();
-            this.guna2CustomGradientPanel2.ResumeLayout(false);
-            this.guna2CustomGradientPanel2.PerformLayout();
-            this.guna2CustomGradientPanel1.ResumeLayout(false);
-            this.guna2CustomGradientPanel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.panel6.ResumeLayout(false);
             this.panel6.PerformLayout();
@@ -770,6 +796,14 @@
             this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
+            this.guna2ShadowPanel1.ResumeLayout(false);
+            this.guna2ShadowPanel1.PerformLayout();
+            this.guna2ShadowPanel2.ResumeLayout(false);
+            this.guna2ShadowPanel2.PerformLayout();
+            this.guna2ShadowPanel3.ResumeLayout(false);
+            this.guna2ShadowPanel3.PerformLayout();
+            this.guna2CustomGradientPanel5.ResumeLayout(false);
+            this.guna2CustomGradientPanel5.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -808,10 +842,6 @@
         private System.Windows.Forms.Label label18;
         internal System.Windows.Forms.Panel panelcontainer;
         private Guna.UI2.WinForms.Guna2DataGridView recentorder;
-        private Guna.UI2.WinForms.Guna2CustomGradientPanel guna2CustomGradientPanel4;
-        private System.Windows.Forms.Label label19;
-        private System.Windows.Forms.Label label23;
-        private System.Windows.Forms.Label label24;
         private Guna.UI2.WinForms.Guna2CustomGradientPanel guna2CustomGradientPanel3;
         private System.Windows.Forms.Label label25;
         private System.Windows.Forms.Label label26;
@@ -829,5 +859,11 @@
         private System.Windows.Forms.Label label35;
         private System.Windows.Forms.Label label36;
         private System.Windows.Forms.Label label37;
+        private Guna.UI2.WinForms.Guna2ShadowPanel guna2ShadowPanel1;
+        private Guna.UI2.WinForms.Guna2ShadowPanel guna2ShadowPanel2;
+        private Guna.UI2.WinForms.Guna2ShadowPanel guna2ShadowPanel3;
+        private Guna.UI2.WinForms.Guna2CustomGradientPanel guna2CustomGradientPanel5;
+        private System.Windows.Forms.Label label38;
+        private System.Windows.Forms.Label label24;
     }
 }
