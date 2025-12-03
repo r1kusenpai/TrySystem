@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Guna.UI2.WinForms;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -27,6 +28,7 @@ namespace TrySystem
             _currentUsername = string.IsNullOrWhiteSpace(username) ? "User" : username.Trim();
             InitializeComponent();
             EnhanceUI();
+            SetupDataGridView();
             LoadDashboardData();
             UpdateUserGreeting();
 
@@ -41,6 +43,37 @@ namespace TrySystem
                 };
 
             SetActiveButton(homebutton);
+        }
+        private void SetupDataGridView()
+        {
+            recentorder.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill; // Force fill width
+            recentorder.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            recentorder.ReadOnly = true;
+            recentorder.AllowUserToAddRows = false;
+            recentorder.RowHeadersVisible = false;
+            recentorder.BorderStyle = BorderStyle.None;
+            recentorder.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
+
+            // --- 2. Header Style (The Fix for Clicking) ---
+            recentorder.EnableHeadersVisualStyles = false;
+            recentorder.ColumnHeadersHeight = 45;
+            recentorder.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
+
+            // Normal State
+            recentorder.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(248, 250, 252); // Light Gray
+            recentorder.ColumnHeadersDefaultCellStyle.ForeColor = Color.FromArgb(71, 85, 105);   // Dark Gray Text
+            recentorder.ColumnHeadersDefaultCellStyle.Font = new Font("Segoe UI", 9, FontStyle.Bold);
+
+            // Selection State (FIX: Make it same as Normal so it doesn't change color)
+            recentorder.ColumnHeadersDefaultCellStyle.SelectionBackColor = Color.FromArgb(248, 250, 252);
+            recentorder.ColumnHeadersDefaultCellStyle.SelectionForeColor = Color.FromArgb(71, 85, 105);
+
+            // --- 3. Row Style ---
+            recentorder.ThemeStyle.RowsStyle.BackColor = Color.White;
+            recentorder.ThemeStyle.RowsStyle.ForeColor = Color.Black;
+            recentorder.ThemeStyle.RowsStyle.SelectionBackColor = Color.FromArgb(254, 226, 226); // Light Red Highlight
+            recentorder.ThemeStyle.RowsStyle.SelectionForeColor = Color.Black;
+            recentorder.RowTemplate.Height = 30;
         }
 
 
@@ -94,7 +127,8 @@ namespace TrySystem
 
             // Load low stock count
             int lowStockCount = DatabaseHelper.GetLowStockCount();
-            label21.Text = lowStockCount.ToString();
+            //label21.Text = lowStockCount.ToString(); $"{totalLowCount} items are below threshold.";
+            label21.Text = $"{lowStockCount} items are below threshold.";
 
             // Load recent history
             LoadRecentHistory();
@@ -212,12 +246,10 @@ namespace TrySystem
             Close();
         }
 
+        private void label21_Click(object sender, EventArgs e)
+        {
 
-
-
-
-
-
+        }
     }
 
 
