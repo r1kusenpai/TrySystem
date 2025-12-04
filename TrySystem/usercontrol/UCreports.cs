@@ -38,6 +38,104 @@ namespace TrySystem.usercontrol
             int lowStockCount = DatabaseHelper.GetLowStockCount();
             label21.Text = lowStockCount.ToString();
 
+                // 2. Add a Manual "Status" Column to the DataTable if it doesn't exist
+                if (!lowStockData.Columns.Contains("StatusText"))
+                {
+                    lowStockData.Columns.Add("StatusText", typeof(string));
+                }
+
+                // 3. Calculate Status (Critical vs Low)
+                foreach (DataRow row in lowStockData.Rows)
+                {
+                    int qty = Convert.ToInt32(row["Quantity"]);
+                    if (qty <= 5) // You can change this threshold
+                    {
+                        row["StatusText"] = "CRITICAL";
+                    }
+                    else
+                    {
+                        row["StatusText"] = "LOW STOCK";
+                    }
+                }
+
+                // 4. Bind Data
+                guna2DataGridView1.DataSource = lowStockData;
+
+                // 5. Configure Columns & Distribution
+                if (guna2DataGridView1.Columns.Count > 0)
+                {
+                    // Hide IDs
+                    if (guna2DataGridView1.Columns.Contains("Id")) guna2DataGridView1.Columns["Id"].Visible = false;
+                    if (guna2DataGridView1.Columns.Contains("ProductId")) guna2DataGridView1.Columns["ProductId"].Visible = false;
+                    if (guna2DataGridView1.Columns.Contains("ProductCode")) guna2DataGridView1.Columns["ProductCode"].Visible = false;
+                    if (guna2DataGridView1.Columns.Contains("Brand")) guna2DataGridView1.Columns["Brand"].Visible = false;
+                    if (guna2DataGridView1.Columns.Contains("SupplierId")) guna2DataGridView1.Columns["SupplierId"].Visible = false;
+
+                    // --- A. Product Name (40% Width) ---
+                    if (guna2DataGridView1.Columns.Contains("ProductName"))
+                    {
+                        guna2DataGridView1.Columns["ProductName"].HeaderText = "Product Name";
+                        guna2DataGridView1.Columns["ProductName"].FillWeight = 20;
+                    }
+                    //change
+                    // --- B. Category (20% Width) ---
+                    if (guna2DataGridView1.Columns.Contains("Category"))
+                    {
+                        guna2DataGridView1.Columns["Category"].HeaderText = "Category";
+                        guna2DataGridView1.Columns["Category"].FillWeight = 20;
+                    }
+
+                    // --- C. Stock (10% Width) ---
+                    if (guna2DataGridView1.Columns.Contains("Quantity"))
+                    {
+                        guna2DataGridView1.Columns["Quantity"].HeaderText = "Stock";
+                        guna2DataGridView1.Columns["Quantity"].FillWeight = 20;
+                        //guna2DataGridView1.Columns["Quantity"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                    }
+
+                    // --- D. Price (15% Width) ---
+                    if (guna2DataGridView1.Columns.Contains("Price"))
+                    {
+                        guna2DataGridView1.Columns["Price"].HeaderText = "Price";
+                        guna2DataGridView1.Columns["Price"].FillWeight = 20;
+                        guna2DataGridView1.Columns["Price"].DefaultCellStyle.Format = "C2";
+                        //guna2DataGridView1.Columns["Price"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+                    }
+
+                    // --- E. Status (15% Width) ---
+                    if (guna2DataGridView1.Columns.Contains("StatusText"))
+                    {
+                        guna2DataGridView1.Columns["StatusText"].HeaderText = "Status";
+                        guna2DataGridView1.Columns["StatusText"].FillWeight = 20;
+                        guna2DataGridView1.Columns["StatusText"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                        guna2DataGridView1.Columns["StatusText"].DefaultCellStyle.Font = new Font("Segoe UI", 8, FontStyle.Bold);
+
+                        // Optional: Color Code the text
+                        // (Note: Advanced row coloring requires the CellFormatting event, 
+                        // but this sets the basic column up)
+                    }
+                }
+
+                // --- Charts & Labels Logic (Keep as is) ---
+                int totalLowCount = DatabaseHelper.GetLowStockCount();
+                if (totallowitems != null) totallowitems.Text = totalLowCount.ToString();
+                int criticalCount = lowStockData.AsEnumerable().Count(r => Convert.ToInt32(r["Quantity"]) <= 5);
+                if (criticalitems != null) criticalitems.Text = criticalCount.ToString();
+
+                // Alert Banner
+                if (lowalert != null)
+                {
+                    if (totalLowCount > 0)
+                    {
+                        lowalert.Text = $"{totalLowCount} items are below threshold.";
+                        lowalert.ForeColor = Color.FromArgb(185, 28, 28);
+                    }
+                    else
+                    {
+                        lowalert.Text = "✅ Inventory levels are healthy.";
+                        lowalert.ForeColor = Color.FromArgb(21, 128, 61);
+                    }
+                }
             // Load low stock products categorized
             DataTable lowStockData = DatabaseHelper.GetLowStockProducts();
             dataGridView1.DataSource = lowStockData;
