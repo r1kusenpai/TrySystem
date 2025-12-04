@@ -101,6 +101,7 @@
             this.home.Name = "home";
             this.home.Size = new System.Drawing.Size(927, 611);
             this.home.TabIndex = 5;
+            this.home.Paint += new System.Windows.Forms.PaintEventHandler(this.home_Paint);
             // 
             // label13
             // 

@@ -17,6 +17,7 @@ namespace TrySystem
         {
             InitializeComponent();
             EnhanceUI();
+            LoadDashboardData();
         }
         
         private void EnhanceUI()
@@ -54,6 +55,42 @@ namespace TrySystem
             // Enhance logo
             logo.ForeColor = Color.White;
             logo.Font = new Font("Century Gothic", 14F, FontStyle.Bold);
+        }
+
+        private void LoadDashboardData()
+        {
+            // Load inventory value
+            decimal inventoryValue = DatabaseHelper.GetInventoryValue();
+            label4.Text = inventoryValue.ToString("N2");
+
+            // Load total products
+            int totalProducts = DatabaseHelper.GetTotalProducts();
+            label11.Text = totalProducts.ToString();
+
+            // Load total units
+            decimal inventoryValue1 = DatabaseHelper.GetInventoryValue();
+            label5.Text = inventoryValue1.ToString();
+
+            // Load low stock count
+            int lowStockCount = DatabaseHelper.GetLowStockCount();
+            label21.Text = lowStockCount.ToString();
+
+            // Load recent history
+            LoadRecentHistory();
+        }
+
+        private void LoadRecentHistory()
+        {
+            dataGridView1.DataSource = DatabaseHelper.GetHistory();
+            if (dataGridView1.Columns.Count > 0)
+            {
+                dataGridView1.Columns["Id"].Visible = false;
+                dataGridView1.Columns["ProductId"].Visible = false;
+                if (dataGridView1.Columns["Price"] != null)
+                {
+                    dataGridView1.Columns["Price"].DefaultCellStyle.Format = "C2";
+                }
+            }
         }
         private void addusercontrol(UserControl usercontrol)
         {

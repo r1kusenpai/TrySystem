@@ -17,6 +17,10 @@ namespace TrySystem.usercontrol
             InitializeComponent();
             LoadInventory();
             SetupDataGridView();
+
+            // Subscribe to database events so the UI stays in sync with data changes.
+            DatabaseHelper.ProductAdded += DatabaseHelper_ProductAdded;
+            DatabaseHelper.LowStockAlert += DatabaseHelper_LowStockAlert;
         }
 
         private void SetupDataGridView()
@@ -38,6 +42,22 @@ namespace TrySystem.usercontrol
                     dataGridView1.Columns["Price"].DefaultCellStyle.Format = "C2";
                 }
             }
+        }
+
+        private void DatabaseHelper_ProductAdded(object sender, ProductEventArgs e)
+        {
+            // Refresh grid when a product is added or updated.
+            LoadInventory();
+        }
+
+        private void DatabaseHelper_LowStockAlert(object sender, ProductEventArgs e)
+        {
+            // Simple notification example for low stock using delegates & events.
+            MessageBox.Show(
+                $"Low stock alert for '{e.ProductName}' (Qty: {e.Quantity}) in category '{e.Category}'.",
+                "Low Stock Alert",
+                MessageBoxButtons.OK,
+                MessageBoxIcon.Warning);
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -142,6 +162,11 @@ namespace TrySystem.usercontrol
                     LoadInventory(); // Refresh the inventory
                 }
             }
+        }
+
+        private void UCinventory_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -22,12 +22,12 @@ namespace TrySystem.Properties {
                 return defaultInstance;
             }
         }
-        
+
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=Inventory;Integrated Security=" +
-            "True;TrustServerCertificate=True")]
+        // Intentionally left blank – runtime DB access is centralized in DatabaseHelper.
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
         public string InventoryConnectionString {
             get {
                 return ((string)(this["InventoryConnectionString"]));

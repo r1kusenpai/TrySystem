@@ -1,4 +1,5 @@
-﻿using System;
+﻿
+using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
@@ -15,6 +16,9 @@ namespace TrySystem
         [STAThread]
         static void Main()
         {
+            
+            Application.Run(new login());
+
             try
             {
                 Application.EnableVisualStyles();

@@ -1,5 +1,4 @@
 using System;
-using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
 using System.Windows.Forms;
@@ -12,27 +11,23 @@ namespace TrySystem
         public static event ProductEventHandler ProductAdded;
         public static event ProductEventHandler LowStockAlert;
 
-        private static readonly string connectionString;
+        // Single, centralized connection string for the entire application.
+        // To change the database, update ONLY this value.
+        private static readonly string connectionString =
+            "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=TrySystemDB;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False";
 
-        static DatabaseHelper()
-        {
-            connectionString = ConfigurationManager.ConnectionStrings["TrySystemConnection"]?.ConnectionString;
-
-            if (string.IsNullOrWhiteSpace(connectionString))
-            {
-                // Fallback to a sensible default so the app can still start.
-                connectionString = "Server=localhost;Database=TrySystemDB;Trusted_Connection=True;";
-            }
-        }
-
-        private static SqlConnection CreateConnection()
+        /// <summary>
+        /// Creates and returns a new <see cref="SqlConnection"/> using the global connection string.
+        /// This is the ONLY method that should be used to open database connections.
+        /// </summary>
+        public static SqlConnection GetConnection()
         {
             return new SqlConnection(connectionString);
         }
 
         public static void InitializeDatabase()
         {
-            using (SqlConnection conn = CreateConnection())
+            using (SqlConnection conn = GetConnection())
             {
                 conn.Open();
 
@@ -106,7 +101,7 @@ END";
         {
             try
             {
-                using (SqlConnection conn = CreateConnection())
+                using (SqlConnection conn = GetConnection())
                 {
                     conn.Open();
                     string query = @"INSERT INTO Products (ProductName, ProductCode, Category, Brand, Price, Quantity) 
@@ -152,7 +147,7 @@ END";
             DataTable dt = new DataTable();
             try
             {
-                using (SqlConnection conn = CreateConnection())
+                using (SqlConnection conn = GetConnection())
                 {
                     conn.Open();
                     string query = "SELECT Id, ProductName, ProductCode, Category, Brand, Price, Quantity FROM Products ORDER BY ProductName";
@@ -178,7 +173,7 @@ END";
             DataTable dt = new DataTable();
             try
             {
-                using (SqlConnection conn = CreateConnection())
+                using (SqlConnection conn = GetConnection())
                 {
                     conn.Open();
                     string query = @"SELECT Id, ProductName, ProductCode, Category, Brand, Price, Quantity 
@@ -207,7 +202,7 @@ END";
             DataTable dt = new DataTable();
             try
             {
-                using (SqlConnection conn = CreateConnection())
+                using (SqlConnection conn = GetConnection())
                 {
                     conn.Open();
                     string query = @"SELECT Id, ProductName, ProductCode, Category, Brand, Price, Quantity 
@@ -232,7 +227,7 @@ END";
             DataTable dt = new DataTable();
             try
             {
-                using (SqlConnection conn = CreateConnection())
+                using (SqlConnection conn = GetConnection())
                 {
                     conn.Open();
                     string query = @"SELECT Category, COUNT(*) as Count, SUM(Quantity) as TotalQuantity
@@ -258,7 +253,7 @@ END";
             DataTable dt = new DataTable();
             try
             {
-                using (SqlConnection conn = CreateConnection())
+                using (SqlConnection conn = GetConnection())
                 {
                     conn.Open();
                     string query = "SELECT TOP 100 * FROM History ORDER BY DateCreated DESC";
@@ -279,7 +274,7 @@ END";
         {
             try
             {
-                using (SqlConnection conn = CreateConnection())
+                using (SqlConnection conn = GetConnection())
                 {
                     conn.Open();
                     string query = @"INSERT INTO History (ProductId, ProductName, Action, Quantity, Price, Category) 
@@ -306,7 +301,7 @@ END";
         {
             try
             {
-                using (SqlConnection conn = CreateConnection())
+                using (SqlConnection conn = GetConnection())
                 {
                     conn.Open();
                     string query = "SELECT COUNT(*) FROM Products WHERE Quantity <= LowStockThreshold";
@@ -326,7 +321,7 @@ END";
         {
             try
             {
-                using (SqlConnection conn = CreateConnection())
+                using (SqlConnection conn = GetConnection())
                 {
                     conn.Open();
                     string query = "SELECT SUM(Price * Quantity) FROM Products";
@@ -347,7 +342,7 @@ END";
         {
             try
             {
-                using (SqlConnection conn = CreateConnection())
+                using (SqlConnection conn = GetConnection())
                 {
                     conn.Open();
                     string query = "SELECT COUNT(*) FROM Products";
@@ -367,7 +362,7 @@ END";
         {
             try
             {
-                using (SqlConnection conn = CreateConnection())
+                using (SqlConnection conn = GetConnection())
                 {
                     conn.Open();
                     string query = "SELECT SUM(Quantity) FROM Products";
@@ -388,7 +383,7 @@ END";
         {
             try
             {
-                using (SqlConnection conn = CreateConnection())
+                using (SqlConnection conn = GetConnection())
                 {
                     conn.Open();
                     string query = @"UPDATE Products 
@@ -435,7 +430,7 @@ END";
         {
             try
             {
-                using (SqlConnection conn = CreateConnection())
+                using (SqlConnection conn = GetConnection())
                 {
                     conn.Open();
 
@@ -506,7 +501,7 @@ END";
         {
             try
             {
-                using (SqlConnection conn = CreateConnection())
+                using (SqlConnection conn = GetConnection())
                 {
                     conn.Open();
                     string query = "SELECT * FROM Products WHERE Id = @id";
@@ -537,7 +532,7 @@ END";
             DataTable dt = new DataTable();
             try
             {
-                using (SqlConnection conn = CreateConnection())
+                using (SqlConnection conn = GetConnection())
                 {
                     conn.Open();
                     string query = @"SELECT Id, SupplierName, ProductName, Quantity, Price, TotalAmount, OrderDate, Status 
@@ -564,7 +559,7 @@ END";
         {
             try
             {
-                using (SqlConnection conn = CreateConnection())
+                using (SqlConnection conn = GetConnection())
                 {
                     conn.Open();
                     string query = "SELECT COUNT(*) FROM PurchaseOrders";
@@ -584,7 +579,7 @@ END";
         {
             try
             {
-                using (SqlConnection conn = CreateConnection())
+                using (SqlConnection conn = GetConnection())
                 {
                     conn.Open();
                     string query = "SELECT SUM(TotalAmount) FROM PurchaseOrders";
@@ -605,7 +600,7 @@ END";
         {
             try
             {
-                using (SqlConnection conn = CreateConnection())
+                using (SqlConnection conn = GetConnection())
                 {
                     conn.Open();
                     string query = "SELECT COUNT(DISTINCT SupplierName) FROM PurchaseOrders WHERE SupplierName IS NOT NULL AND LTRIM(RTRIM(SupplierName)) <> ''";
@@ -626,7 +621,7 @@ END";
         {
             try
             {
-                using (SqlConnection conn = CreateConnection())
+                using (SqlConnection conn = GetConnection())
                 {
                     conn.Open();
                     string query = "SELECT COUNT(*) FROM PurchaseOrders WHERE Status IN ('Pending', 'Processing')";
@@ -646,7 +641,7 @@ END";
         {
             try
             {
-                using (SqlConnection conn = CreateConnection())
+                using (SqlConnection conn = GetConnection())
                 {
                     conn.Open();
                     string query = @"INSERT INTO PurchaseOrders (SupplierName, ProductId, ProductName, Quantity, Price, Status) 
@@ -681,7 +676,7 @@ END";
         {
             try
             {
-                using (SqlConnection conn = CreateConnection())
+                using (SqlConnection conn = GetConnection())
                 {
                     conn.Open();
                     string query = @"UPDATE PurchaseOrders 
@@ -719,7 +714,7 @@ END";
         {
             try
             {
-                using (SqlConnection conn = CreateConnection())
+                using (SqlConnection conn = GetConnection())
                 {
                     conn.Open();
                     string query = "DELETE FROM PurchaseOrders WHERE Id = @id";
@@ -747,7 +742,7 @@ END";
         {
             try
             {
-                using (SqlConnection conn = CreateConnection())
+                using (SqlConnection conn = GetConnection())
                 {
                     conn.Open();
                     string query = "SELECT * FROM PurchaseOrders WHERE Id = @id";
