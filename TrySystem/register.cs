@@ -16,6 +16,8 @@ namespace SmartShelf_try
         public register()
         {
             InitializeComponent();
+<<<<<<< HEAD
+=======
             this.Load += Register_Load;
         }
 
@@ -24,10 +26,16 @@ namespace SmartShelf_try
             // Set password character to hide password input
             textBox2.PasswordChar = '*';
             textBox2.UseSystemPasswordChar = false;
+>>>>>>> ccd93a08a8d773fb8eadb95edc0c84be66da8ff2
         }
 
         private void btnregister_Click(object sender, EventArgs e)
         {
+<<<<<<< HEAD
+            Form1 login1 = new Form1();
+            this.Hide();
+            login1.ShowDialog();
+=======
             string username = textBox1.Text.Trim();
             string password = textBox2.Text;
 
@@ -43,6 +51,7 @@ namespace SmartShelf_try
                 this.DialogResult = DialogResult.OK;
                 this.Close();
             }
+>>>>>>> ccd93a08a8d773fb8eadb95edc0c84be66da8ff2
         }
     }
 }

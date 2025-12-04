@@ -16,7 +16,11 @@ namespace TrySystem
         // Single, centralized connection string for the entire application.
         // To change the database, update ONLY this value.
         private static readonly string connectionString =
+<<<<<<< HEAD
+            "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=TrySystemDB;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False";
+=======
             "Data Source=LAPTOP-9LF21PIU\\SQLEXPRESS;Initial Catalog=TrysystemDB;Integrated Security=True;Encrypt=True;TrustServerCertificate=True";
+>>>>>>> ccd93a08a8d773fb8eadb95edc0c84be66da8ff2
 
         /// <summary>
         /// Creates and returns a new <see cref="SqlConnection"/> using the global connection string.

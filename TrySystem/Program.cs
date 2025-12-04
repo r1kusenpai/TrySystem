@@ -16,6 +16,9 @@ namespace TrySystem
         [STAThread]
         static void Main()
         {
+            
+            Application.Run(new login());
+
             try
             {
                 Application.EnableVisualStyles();

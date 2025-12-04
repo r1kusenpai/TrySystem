@@ -38,11 +38,21 @@
             this.label16 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
+<<<<<<< HEAD
+            this.label12 = new System.Windows.Forms.Label();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label17 = new System.Windows.Forms.Label();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+=======
             this.label2 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
+>>>>>>> ccd93a08a8d773fb8eadb95edc0c84be66da8ff2
             this.label4 = new System.Windows.Forms.Label();
             this.guna2ShadowPanel1 = new Guna.UI2.WinForms.Guna2ShadowPanel();
             this.guna2ShadowPanel2 = new Guna.UI2.WinForms.Guna2ShadowPanel();
@@ -106,6 +116,22 @@
             this.label16.TabIndex = 0;
             this.label16.Text = "Total Suppliers";
             // 
+<<<<<<< HEAD
+            // panel5
+            // 
+            this.panel5.BackColor = System.Drawing.Color.White;
+            this.panel5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel5.Controls.Add(this.label10);
+            this.panel5.Controls.Add(this.label11);
+            this.panel5.Controls.Add(this.label2);
+            this.panel5.Controls.Add(this.label12);
+            this.panel5.Location = new System.Drawing.Point(321, 82);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(282, 158);
+            this.panel5.TabIndex = 12;
+            // 
+=======
+>>>>>>> ccd93a08a8d773fb8eadb95edc0c84be66da8ff2
             // label10
             // 
             this.label10.AutoSize = true;
@@ -118,6 +144,14 @@
             // label11
             // 
             this.label11.AutoSize = true;
+<<<<<<< HEAD
+            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F);
+            this.label11.Location = new System.Drawing.Point(32, 88);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(32, 36);
+            this.label11.TabIndex = 1;
+            this.label11.Text = "0";
+=======
             this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label11.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
             this.label11.Location = new System.Drawing.Point(35, 53);
@@ -137,6 +171,7 @@
             this.label2.TabIndex = 1;
             this.label2.Text = "₱";
             this.label2.Click += new System.EventHandler(this.label2_Click);
+>>>>>>> ccd93a08a8d773fb8eadb95edc0c84be66da8ff2
             // 
             // label12
             // 
@@ -148,12 +183,32 @@
             this.label12.TabIndex = 0;
             this.label12.Text = "Total Purchase Value";
             // 
+<<<<<<< HEAD
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.White;
+            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.label1);
+            this.panel1.Controls.Add(this.label3);
+            this.panel1.Controls.Add(this.label17);
+            this.panel1.Location = new System.Drawing.Point(12, 82);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(282, 158);
+            this.panel1.TabIndex = 11;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F);
+            this.label1.Location = new System.Drawing.Point(5, 88);
+=======
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.Blue;
             this.label1.Location = new System.Drawing.Point(9, 53);
+>>>>>>> ccd93a08a8d773fb8eadb95edc0c84be66da8ff2
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(33, 36);
             this.label1.TabIndex = 3;
@@ -168,6 +223,20 @@
             this.label3.TabIndex = 2;
             this.label3.Text = "Ongoing Orders";
             // 
+<<<<<<< HEAD
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F);
+            this.label2.Location = new System.Drawing.Point(5, 88);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(35, 36);
+            this.label2.TabIndex = 1;
+            this.label2.Text = "₱";
+            this.label2.Click += new System.EventHandler(this.label2_Click);
+            // 
+=======
+>>>>>>> ccd93a08a8d773fb8eadb95edc0c84be66da8ff2
             // label17
             // 
             this.label17.AutoSize = true;
@@ -190,6 +259,18 @@
             // 
             // guna2ShadowPanel1
             // 
+<<<<<<< HEAD
+            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(130)))), ((int)(((byte)(180)))));
+            this.button1.FlatAppearance.BorderSize = 0;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.ForeColor = System.Drawing.Color.White;
+            this.button1.Location = new System.Drawing.Point(801, 41);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(114, 35);
+            this.button1.TabIndex = 16;
+            this.button1.Text = "Add Order";
+            this.button1.UseVisualStyleBackColor = false;
+=======
             this.guna2ShadowPanel1.BackColor = System.Drawing.Color.Transparent;
             this.guna2ShadowPanel1.Controls.Add(this.label3);
             this.guna2ShadowPanel1.Controls.Add(this.label1);
@@ -203,9 +284,22 @@
             this.guna2ShadowPanel1.ShadowStyle = Guna.UI2.WinForms.Guna2ShadowPanel.ShadowMode.Dropped;
             this.guna2ShadowPanel1.Size = new System.Drawing.Size(282, 120);
             this.guna2ShadowPanel1.TabIndex = 19;
+>>>>>>> ccd93a08a8d773fb8eadb95edc0c84be66da8ff2
             // 
             // guna2ShadowPanel2
             // 
+<<<<<<< HEAD
+            this.btnEdit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(130)))), ((int)(((byte)(180)))));
+            this.btnEdit.FlatAppearance.BorderSize = 0;
+            this.btnEdit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnEdit.ForeColor = System.Drawing.Color.White;
+            this.btnEdit.Location = new System.Drawing.Point(680, 260);
+            this.btnEdit.Name = "btnEdit";
+            this.btnEdit.Size = new System.Drawing.Size(114, 35);
+            this.btnEdit.TabIndex = 17;
+            this.btnEdit.Text = "Edit";
+            this.btnEdit.UseVisualStyleBackColor = false;
+=======
             this.guna2ShadowPanel2.BackColor = System.Drawing.Color.Transparent;
             this.guna2ShadowPanel2.Controls.Add(this.label11);
             this.guna2ShadowPanel2.Controls.Add(this.label10);
@@ -220,9 +314,22 @@
             this.guna2ShadowPanel2.ShadowStyle = Guna.UI2.WinForms.Guna2ShadowPanel.ShadowMode.Dropped;
             this.guna2ShadowPanel2.Size = new System.Drawing.Size(282, 120);
             this.guna2ShadowPanel2.TabIndex = 20;
+>>>>>>> ccd93a08a8d773fb8eadb95edc0c84be66da8ff2
             // 
             // guna2ShadowPanel3
             // 
+<<<<<<< HEAD
+            this.btnDelete.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(53)))), ((int)(((byte)(69)))));
+            this.btnDelete.FlatAppearance.BorderSize = 0;
+            this.btnDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDelete.ForeColor = System.Drawing.Color.White;
+            this.btnDelete.Location = new System.Drawing.Point(800, 260);
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Size = new System.Drawing.Size(114, 35);
+            this.btnDelete.TabIndex = 18;
+            this.btnDelete.Text = "Delete";
+            this.btnDelete.UseVisualStyleBackColor = false;
+=======
             this.guna2ShadowPanel3.BackColor = System.Drawing.Color.Transparent;
             this.guna2ShadowPanel3.Controls.Add(this.label14);
             this.guna2ShadowPanel3.Controls.Add(this.label16);
@@ -324,6 +431,7 @@
             this.purchasestock.TabIndex = 22;
             this.purchasestock.Text = "New Purchase";
             this.purchasestock.Click += new System.EventHandler(this.guna2Button1_Click);
+>>>>>>> ccd93a08a8d773fb8eadb95edc0c84be66da8ff2
             // 
             // UCpurchase
             // 

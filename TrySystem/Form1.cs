@@ -1,5 +1,4 @@
-﻿using Guna.UI2.WinForms;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -28,7 +27,13 @@ namespace TrySystem
             _currentUsername = string.IsNullOrWhiteSpace(username) ? "User" : username.Trim();
             InitializeComponent();
             EnhanceUI();
+<<<<<<< HEAD
+<<<<<<< HEAD
+            LoadDashboardData();
+=======
             SetupDataGridView();
+=======
+>>>>>>> parent of ce86efa (New home interface and reports)
             LoadDashboardData();
             UpdateUserGreeting();
 
@@ -43,37 +48,7 @@ namespace TrySystem
                 };
 
             SetActiveButton(homebutton);
-        }
-        private void SetupDataGridView()
-        {
-            recentorder.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill; // Force fill width
-            recentorder.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            recentorder.ReadOnly = true;
-            recentorder.AllowUserToAddRows = false;
-            recentorder.RowHeadersVisible = false;
-            recentorder.BorderStyle = BorderStyle.None;
-            recentorder.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
-
-            // --- 2. Header Style (The Fix for Clicking) ---
-            recentorder.EnableHeadersVisualStyles = false;
-            recentorder.ColumnHeadersHeight = 45;
-            recentorder.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
-
-            // Normal State
-            recentorder.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(248, 250, 252); // Light Gray
-            recentorder.ColumnHeadersDefaultCellStyle.ForeColor = Color.FromArgb(71, 85, 105);   // Dark Gray Text
-            recentorder.ColumnHeadersDefaultCellStyle.Font = new Font("Segoe UI", 9, FontStyle.Bold);
-
-            // Selection State (FIX: Make it same as Normal so it doesn't change color)
-            recentorder.ColumnHeadersDefaultCellStyle.SelectionBackColor = Color.FromArgb(248, 250, 252);
-            recentorder.ColumnHeadersDefaultCellStyle.SelectionForeColor = Color.FromArgb(71, 85, 105);
-
-            // --- 3. Row Style ---
-            recentorder.ThemeStyle.RowsStyle.BackColor = Color.White;
-            recentorder.ThemeStyle.RowsStyle.ForeColor = Color.Black;
-            recentorder.ThemeStyle.RowsStyle.SelectionBackColor = Color.FromArgb(254, 226, 226); // Light Red Highlight
-            recentorder.ThemeStyle.RowsStyle.SelectionForeColor = Color.Black;
-            recentorder.RowTemplate.Height = 30;
+>>>>>>> ccd93a08a8d773fb8eadb95edc0c84be66da8ff2
         }
 
 
@@ -113,9 +88,15 @@ namespace TrySystem
 
         private void LoadDashboardData()
         {
+<<<<<<< HEAD
+            // Load inventory value
+            decimal inventoryValue = DatabaseHelper.GetInventoryValue();
+            label4.Text = inventoryValue.ToString("N2");
+=======
             //Load inventory value
             //decimal inventoryValue = DatabaseHelper.GetInventoryValue();
             //label4.Text = inventoryValue.ToString("N2");
+>>>>>>> ccd93a08a8d773fb8eadb95edc0c84be66da8ff2
 
             // Load total products
             int totalProducts = DatabaseHelper.GetTotalProducts();
@@ -127,13 +108,36 @@ namespace TrySystem
 
             // Load low stock count
             int lowStockCount = DatabaseHelper.GetLowStockCount();
+<<<<<<< HEAD
+<<<<<<< HEAD
+            label21.Text = lowStockCount.ToString();
+=======
             //label21.Text = lowStockCount.ToString(); $"{totalLowCount} items are below threshold.";
             label21.Text = $"{lowStockCount} items are below threshold.";
+>>>>>>> ccd93a08a8d773fb8eadb95edc0c84be66da8ff2
+=======
+            label21.Text = lowStockCount.ToString();
+>>>>>>> parent of ce86efa (New home interface and reports)
 
             // Load recent history
             LoadRecentHistory();
         }
 
+<<<<<<< HEAD
+        private void LoadRecentHistory()
+        {
+            dataGridView1.DataSource = DatabaseHelper.GetHistory();
+            if (dataGridView1.Columns.Count > 0)
+            {
+                dataGridView1.Columns["Id"].Visible = false;
+                dataGridView1.Columns["ProductId"].Visible = false;
+                if (dataGridView1.Columns["Price"] != null)
+                {
+                    dataGridView1.Columns["Price"].DefaultCellStyle.Format = "C2";
+                }
+            }
+        }
+=======
         private void UpdateUserGreeting()
         {
             string displayName = string.IsNullOrWhiteSpace(_currentUsername) ? "User" : _currentUsername;
@@ -164,6 +168,7 @@ namespace TrySystem
 
 
         }
+>>>>>>> ccd93a08a8d773fb8eadb95edc0c84be66da8ff2
         private void addusercontrol(UserControl usercontrol)
         {
             usercontrol.Dock = DockStyle.Fill;
@@ -246,10 +251,12 @@ namespace TrySystem
             Close();
         }
 
-        private void label21_Click(object sender, EventArgs e)
-        {
 
-        }
+
+
+
+
+
     }
 
 

@@ -105,6 +105,22 @@ namespace TrySystem.usercontrol
                 label11.Text = DatabaseHelper.GetTotalPurchaseValue().ToString("N2");
                 label15.Text = DatabaseHelper.GetActiveSuppliers().ToString();
 
+<<<<<<< HEAD
+                // Load total purchase value
+                decimal totalValue = DatabaseHelper.GetTotalPurchaseValue();
+                label11.Text = totalValue.ToString("N2");
+
+                // Load active suppliers
+                int activeSuppliers = DatabaseHelper.GetActiveSuppliers();
+                label15.Text = activeSuppliers.ToString();
+
+                // Load ongoing orders
+                //int ongoingOrders = DatabaseHelper.GetOngoingOrders();
+                //label2.Text = ongoingOrders.ToString();
+
+                // Load purchase order history
+=======
+>>>>>>> ccd93a08a8d773fb8eadb95edc0c84be66da8ff2
                 LoadPurchaseHistory();
             }
             catch (Exception ex)
@@ -261,9 +277,90 @@ namespace TrySystem.usercontrol
             }
         }
 
+<<<<<<< HEAD
+        private void BtnEdit_Click(object sender, EventArgs e)
+        {
+            if (dataGridView1.SelectedRows.Count == 0)
+            {
+                MessageBox.Show("Please select a purchase order to edit.", "No Selection", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
+            DataGridViewRow selectedRow = dataGridView1.SelectedRows[0];
+            DataRow row = null;
+            
+            if (selectedRow.DataBoundItem is DataRowView rowView)
+            {
+                row = rowView.Row;
+            }
+            else if (dataGridView1.DataSource is DataTable dt && selectedRow.Index < dt.Rows.Count)
+            {
+                row = dt.Rows[selectedRow.Index];
+            }
+            
+            if (row != null && row["Id"] != DBNull.Value)
+            {
+                int orderId = Convert.ToInt32(row["Id"]);
+                
+                AddPurchaseOrderForm editForm = new AddPurchaseOrderForm(orderId);
+                if (editForm.ShowDialog() == DialogResult.OK)
+                {
+                    LoadPurchaseData(); // Refresh the purchase data
+                }
+            }
+        }
+
+        private void BtnDelete_Click(object sender, EventArgs e)
+        {
+            if (dataGridView1.SelectedRows.Count == 0)
+            {
+                MessageBox.Show("Please select a purchase order to delete.", "No Selection", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
+            DataGridViewRow selectedRow = dataGridView1.SelectedRows[0];
+            DataRow row = null;
+            
+            if (selectedRow.DataBoundItem is DataRowView rowView)
+            {
+                row = rowView.Row;
+            }
+            else if (dataGridView1.DataSource is DataTable dt && selectedRow.Index < dt.Rows.Count)
+            {
+                row = dt.Rows[selectedRow.Index];
+            }
+            
+            if (row != null && row["Id"] != DBNull.Value)
+            {
+                int orderId = Convert.ToInt32(row["Id"]);
+                string productName = row["ProductName"]?.ToString() ?? "";
+
+                DialogResult result = MessageBox.Show(
+                    $"Are you sure you want to delete the purchase order for '{productName}'?",
+                    "Confirm Delete",
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Question);
+
+                if (result == DialogResult.Yes)
+                {
+                    if (DatabaseHelper.DeletePurchaseOrder(orderId))
+                    {
+                        MessageBox.Show("Purchase order deleted successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        LoadPurchaseData(); // Refresh the purchase data
+                    }
+                }
+            }
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
+=======
         // Unused events
         private void UCpurchase_Load(object sender, EventArgs e) { }
         private void label2_Click(object sender, EventArgs e) { }
         private void guna2ShadowPanel1_Paint(object sender, PaintEventArgs e) { }
+>>>>>>> ccd93a08a8d773fb8eadb95edc0c84be66da8ff2
     }
 }
