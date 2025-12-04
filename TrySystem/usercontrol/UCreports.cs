@@ -139,7 +139,7 @@ namespace TrySystem.usercontrol
                         guna2DataGridView1.Columns["ProductName"].HeaderText = "Product Name";
                         guna2DataGridView1.Columns["ProductName"].FillWeight = 20;
                     }
-
+                    //change
                     // --- B. Category (20% Width) ---
                     if (guna2DataGridView1.Columns.Contains("Category"))
                     {
