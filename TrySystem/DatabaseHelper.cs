@@ -2,6 +2,8 @@ using System;
 using System.Data;
 using System.Data.SqlClient;
 using System.Windows.Forms;
+using System.Security.Cryptography;
+using System.Text;
 
 namespace TrySystem
 {
@@ -14,7 +16,11 @@ namespace TrySystem
         // Single, centralized connection string for the entire application.
         // To change the database, update ONLY this value.
         private static readonly string connectionString =
+<<<<<<< HEAD
             "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=TrySystemDB;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False";
+=======
+            "Data Source=LAPTOP-9LF21PIU\\SQLEXPRESS;Initial Catalog=TrysystemDB;Integrated Security=True;Encrypt=True;TrustServerCertificate=True";
+>>>>>>> ccd93a08a8d773fb8eadb95edc0c84be66da8ff2
 
         /// <summary>
         /// Creates and returns a new <see cref="SqlConnection"/> using the global connection string.
@@ -80,6 +86,18 @@ BEGIN
     );
 END";
 
+                string createUsersTable = @"
+IF NOT EXISTS (SELECT 1 FROM sys.tables WHERE name = 'Users' AND schema_id = SCHEMA_ID('dbo'))
+BEGIN
+    CREATE TABLE dbo.Users (
+        Id INT IDENTITY(1,1) PRIMARY KEY,
+        Username NVARCHAR(100) NOT NULL UNIQUE,
+        PasswordHash NVARCHAR(256) NOT NULL,
+        DateCreated DATETIME2 NOT NULL DEFAULT SYSDATETIME(),
+        LastLogin DATETIME2 NULL
+    );
+END";
+
                 using (SqlCommand cmd = new SqlCommand(createProductsTable, conn))
                 {
                     cmd.ExecuteNonQuery();
@@ -91,6 +109,11 @@ END";
                 }
 
                 using (SqlCommand cmd = new SqlCommand(createPurchaseTable, conn))
+                {
+                    cmd.ExecuteNonQuery();
+                }
+
+                using (SqlCommand cmd = new SqlCommand(createUsersTable, conn))
                 {
                     cmd.ExecuteNonQuery();
                 }
@@ -672,17 +695,24 @@ END";
             }
         }
 
-        public static bool UpdatePurchaseOrder(int id, string supplierName, int productId, string productName, int quantity, decimal price, string status)
+        public static bool UpdatePurchaseOrder(int id, string supplierName, int productId, string productName, int quantity, decimal price, decimal totalAmount, string status)
         {
             try
             {
                 using (SqlConnection conn = GetConnection())
                 {
                     conn.Open();
+
+                    // 2. The SQL query includes TotalAmount
                     string query = @"UPDATE PurchaseOrders 
-                                   SET SupplierName = @supplierName, ProductId = @productId, ProductName = @productName, 
-                                       Quantity = @quantity, Price = @price, Status = @status
-                                   WHERE Id = @id";
+                             SET SupplierName = @supplierName, 
+                                 ProductId = @productId, 
+                                 ProductName = @productName, 
+                                 Quantity = @quantity, 
+                                 Price = @price, 
+                                 TotalAmount = @totalAmount, 
+                                 Status = @status
+                             WHERE Id = @id";
 
                     using (SqlCommand cmd = new SqlCommand(query, conn))
                     {
@@ -692,7 +722,11 @@ END";
                         cmd.Parameters.AddWithValue("@productName", productName);
                         cmd.Parameters.AddWithValue("@quantity", quantity);
                         cmd.Parameters.AddWithValue("@price", price);
+
+                        // 3. Now this line will work because 'totalAmount' is in the top list
+                        cmd.Parameters.AddWithValue("@totalAmount", totalAmount);
                         cmd.Parameters.AddWithValue("@status", status);
+
                         cmd.ExecuteNonQuery();
                     }
                 }
@@ -774,6 +808,172 @@ END";
             {
                 object result = cmd.ExecuteScalar();
                 return result != DBNull.Value ? Convert.ToInt32(result) : 0;
+            }
+        }
+
+        /// <summary>
+        /// Hashes a password using SHA256 algorithm
+        /// </summary>
+        private static string HashPassword(string password)
+        {
+            using (SHA256 sha256Hash = SHA256.Create())
+            {
+                byte[] bytes = sha256Hash.ComputeHash(Encoding.UTF8.GetBytes(password));
+                StringBuilder builder = new StringBuilder();
+                for (int i = 0; i < bytes.Length; i++)
+                {
+                    builder.Append(bytes[i].ToString("x2"));
+                }
+                return builder.ToString();
+            }
+        }
+
+        /// <summary>
+        /// Registers a new user in the database
+        /// </summary>
+        public static bool RegisterUser(string username, string password)
+        {
+            try
+            {
+                if (string.IsNullOrWhiteSpace(username) || string.IsNullOrWhiteSpace(password))
+                {
+                    MessageBox.Show("Username and password cannot be empty.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return false;
+                }
+
+                if (password.Length < 6)
+                {
+                    MessageBox.Show("Password must be at least 6 characters long.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return false;
+                }
+
+                using (SqlConnection conn = GetConnection())
+                {
+                    conn.Open();
+
+                    // Check if username already exists
+                    string checkQuery = "SELECT COUNT(*) FROM Users WHERE Username = @username";
+                    using (SqlCommand checkCmd = new SqlCommand(checkQuery, conn))
+                    {
+                        checkCmd.Parameters.AddWithValue("@username", username);
+                        int count = Convert.ToInt32(checkCmd.ExecuteScalar());
+                        if (count > 0)
+                        {
+                            MessageBox.Show("Username already exists. Please choose a different username.", "Registration Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            return false;
+                        }
+                    }
+
+                    // Hash password and insert user
+                    string passwordHash = HashPassword(password);
+                    string insertQuery = @"INSERT INTO Users (Username, PasswordHash) 
+                                         VALUES (@username, @passwordHash)";
+
+                    using (SqlCommand cmd = new SqlCommand(insertQuery, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@username", username);
+                        cmd.Parameters.AddWithValue("@passwordHash", passwordHash);
+                        cmd.ExecuteNonQuery();
+                    }
+                }
+                return true;
+            }
+            catch (SqlException sqlEx)
+            {
+                MessageBox.Show($"Database error during registration: {sqlEx.Message}", "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error registering user: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+        }
+
+        /// <summary>
+        /// Authenticates a user with username and password
+        /// </summary>
+        /// 
+        // IN DatabaseHelper.cs
+        public static bool AddPurchaseOrder(string supplier, int prodId, string prodName, int qty, decimal price, decimal totalAmount, string status)
+        {
+            using (SqlConnection conn = GetConnection())
+            {
+                // Make sure @total is in your SQL string!
+                string query = "INSERT INTO PurchaseOrders (SupplierName, ProductId, ProductName, Quantity, Price, TotalAmount, Status, OrderDate) VALUES (@sup, @pid, @pname, @qty, @price, @total, @stat, GETDATE())";
+
+                using (SqlCommand cmd = new SqlCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@sup", supplier);
+                    cmd.Parameters.AddWithValue("@pid", prodId);
+                    cmd.Parameters.AddWithValue("@pname", prodName);
+                    cmd.Parameters.AddWithValue("@qty", qty);
+                    cmd.Parameters.AddWithValue("@price", price);
+                    cmd.Parameters.AddWithValue("@total", totalAmount); // <--- THIS IS THE FIX
+                    cmd.Parameters.AddWithValue("@stat", status);
+
+                    conn.Open();
+                    return cmd.ExecuteNonQuery() > 0;
+                }
+            }
+        }
+
+        public static bool AuthenticateUser(string username, string password)
+        {
+            try
+            {
+                if (string.IsNullOrWhiteSpace(username) || string.IsNullOrWhiteSpace(password))
+                {
+                    MessageBox.Show("Please enter both username and password.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return false;
+                }
+
+                using (SqlConnection conn = GetConnection())
+                {
+                    conn.Open();
+                    string query = "SELECT PasswordHash FROM Users WHERE Username = @username";
+                    using (SqlCommand cmd = new SqlCommand(query, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@username", username);
+                        object result = cmd.ExecuteScalar();
+
+                        if (result == null || result == DBNull.Value)
+                        {
+                            MessageBox.Show("Invalid username or password.", "Login Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            return false;
+                        }
+
+                        string storedHash = result.ToString();
+                        string inputHash = HashPassword(password);
+
+                        if (storedHash.Equals(inputHash, StringComparison.OrdinalIgnoreCase))
+                        {
+                            // Update last login time
+                            string updateQuery = "UPDATE Users SET LastLogin = SYSDATETIME() WHERE Username = @username";
+                            using (SqlCommand updateCmd = new SqlCommand(updateQuery, conn))
+                            {
+                                updateCmd.Parameters.AddWithValue("@username", username);
+                                updateCmd.ExecuteNonQuery();
+                            }
+                            return true;
+                        }
+                        else
+                        {
+                            MessageBox.Show("Invalid username or password.", "Login Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            return false;
+                        }
+                    }
+                }
+            }
+            catch (SqlException sqlEx)
+            {
+                MessageBox.Show($"Database error during login: {sqlEx.Message}", "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error authenticating user: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
             }
         }
     }
